@@ -25,7 +25,7 @@
 </head>
 
 <body>
-  <main class="container" ng-app="weatherApp">
+  <main class="container" ng-app="weatherApp"  ng-controller="WeatherInfoController" ng-cloak>
 
     <!--<ul class="menu">
       <li><a href="#!/view1">view1</a></li>
@@ -39,21 +39,32 @@
       <img src="img/logo.png" />
     </figure>
 
-    <section class="row" ng-controller="WeatherInfoController">
-      <div class="col-md-6 col-xs-6 mainInfo text-left" id="cityName">{{ city }}</div>
-      <div class="col-md-6 col-xs-6 mainInfo text-right" id="teperature">15</div>
-      <div class="col-md-6 col-xs-6 additionalInfo text-left">LOCAL DATE and TIME</div>
-      <div class="col-md-6 col-xs-6 additionalInfo text-right">CONDITIONS TEXT</div>
+    <section class="row">
+      <div class="col-md-6 col-xs-6 mainInfo text-left">{{ location.name }}</div>
+      <div class="col-md-6 col-xs-6 mainInfo text-right"><img src="{{ current.condition.icon }}" /> {{ current.temp_c }}</div>
+      <div class="col-md-6 col-xs-6 additionalInfo text-left">{{ location.localtime }}</div>
+      <div class="col-md-6 col-xs-6 additionalInfo text-right">{{ current.condition.text}}</div>
     </section>
     <div class="row ">
-      <div class="col-md-6 col-md-offset-3 text-center">
+      <div class="col-md-6 col-md-offset-3">
+        <div class="text-center">
           <section class="btn-group btn-group-justified">
-            <a href="#" class="btn btn-default col-md-3">Today</a>
+            <a href="#" class="btn btn-default col-md-3" visited>Today</a>
             <a href="#" class="btn btn-default col-md-3">48 Hours Forecast</a>
           </section>
-          <section>
+        </div>
+        <section>
+          <div class="col-md-6 col-xs-6 additionalInfo text-left">Feels like</div>
+          <div class="col-md-6 col-xs-6 additionalInfo text-right">{{ current.feelslike_c }}</div>
+          <div class="col-md-6 col-xs-6 additionalInfo text-left">Wind</div>
+          <div class="col-md-6 col-xs-6 additionalInfo text-right">{{ current.wind_kph }} km/h</div>
+          <div class="col-md-6 col-xs-6 additionalInfo text-left">Humidity</div>
+          <div class="col-md-6 col-xs-6 additionalInfo text-right">{{ current.humidity }} %</div>
+        </section>
 
-          </section>
+        <ul class="list-group">
+          <li class="list-group-item" ng-repeat="day in forecast.forecastday.day">{{ day.date }}</li>
+        </ul>
       </div>
     </div>
     <hr />
@@ -65,7 +76,7 @@
   <!--In production use:
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>-->
 
-  <script src="libs/angular-1.6.4/angular.min.js"></script>
+  <script src="libs/angular-1.6.4/angular.js"></script>
   <script src="libs/angular-1.6.4/angular-loader.min.js"></script>
   <script src="libs/angular-1.6.4/angular-route.min.js"></script>
   <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
