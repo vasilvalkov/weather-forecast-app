@@ -6,6 +6,13 @@ var weatherApp = angular.module('weatherApp', [
   // 'weatherApp.view1',
   // 'weatherApp.view2',
   // 'weatherApp.version'
+])
+.filter('parseDate', [
+    '$filter', function($filter) {
+        return function(input, format) {
+            return $filter('date')(new Date(input), format);
+        };
+    }
 ]);
 // config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
 //   $locationProvider.hashPrefix('!');

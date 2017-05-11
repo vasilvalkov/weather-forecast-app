@@ -12,20 +12,16 @@
   <title>Wheather cast</title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="libs/html5-boilerplate/dist/css/normalize.css">
-  <link rel="stylesheet" href="libs/html5-boilerplate/dist/css/main.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,600,600i&amp;subset=cyrillic"> 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
     crossorigin="anonymous">
-  <!-- Optional theme -->
   <link rel="stylesheet" href="css/bootstrap.min.css">
-  <!-- Latest compiled and minified JavaScript -->
-
   <link rel="stylesheet" href="css/app.css">
   <link rel="shortcut icon" type="image/png" href="img/icons/favicon.png">
 </head>
 
 <body>
-  <main class="container" ng-app="weatherApp"  ng-controller="WeatherInfoController" ng-cloak>
+  <main class="container" ng-app="weatherApp" ng-controller="WeatherInfoController" ng-cloak>
 
     <!--<ul class="menu">
       <li><a href="#!/view1">view1</a></li>
@@ -41,29 +37,42 @@
 
     <section class="row">
       <div class="col-md-6 col-xs-6 mainInfo text-left">{{ location.name }}</div>
-      <div class="col-md-6 col-xs-6 mainInfo text-right"><img src="{{ current.condition.icon }}" /> {{ current.temp_c }}</div>
-      <div class="col-md-6 col-xs-6 additionalInfo text-left">{{ location.localtime }}</div>
+      <div class="col-md-6 col-xs-6 mainInfo text-right"><img src="{{ current.condition.icon }}" /> {{ current.temp_c }}&deg;</div>
+      <div class="col-md-6 col-xs-6 additionalInfo text-left">{{ location.localtime | parseDate : "dd MMM yyyy" }} - {{ location.localtime | parseDate : "HH:mm" }}</div>
       <div class="col-md-6 col-xs-6 additionalInfo text-right">{{ current.condition.text}}</div>
     </section>
     <div class="row ">
       <div class="col-md-6 col-md-offset-3">
         <div class="text-center">
           <section class="btn-group btn-group-justified">
-            <a href="#" class="btn btn-default col-md-3" visited>Today</a>
+            <a href="#" class="btn btn-default col-md-3" ng-checked>Today</a>
             <a href="#" class="btn btn-default col-md-3">48 Hours Forecast</a>
           </section>
         </div>
-        <section>
+        <!--<section>
           <div class="col-md-6 col-xs-6 additionalInfo text-left">Feels like</div>
           <div class="col-md-6 col-xs-6 additionalInfo text-right">{{ current.feelslike_c }}</div>
           <div class="col-md-6 col-xs-6 additionalInfo text-left">Wind</div>
           <div class="col-md-6 col-xs-6 additionalInfo text-right">{{ current.wind_kph }} km/h</div>
           <div class="col-md-6 col-xs-6 additionalInfo text-left">Humidity</div>
           <div class="col-md-6 col-xs-6 additionalInfo text-right">{{ current.humidity }} %</div>
-        </section>
+        </section>-->
 
         <ul class="list-group">
-          <li class="list-group-item" ng-repeat="day in forecast.forecastday.day">{{ day.date }}</li>
+          <li class="list-group-item" ng-repeat="day in forecast.forecastday">
+            <ul class="list-group">
+              <li class="list-group-item d-flex w-100 justify-content-between" ng-repeat="hour in day.hour">
+                <div class="row">
+                  <div class="col-md-6 col-xs-6 additionalInfo text-left">{{ hour.time | parseDate : 'HH:mm' }}</div>
+                  <div class="col-md-6 col-xs-6 additionalInfo text-right"><img class="ing-responsive smaller" src="{{ hour.condition.icon }}" /> {{ hour.temp_c }}&deg;</div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6 col-xs-6 text-left">{{ hour.time | parseDate : "dd MMM yyyy" }}</div>
+                  <div class="col-md-6 col-xs-6 text-right">{{ hour.condition.text}}</div>
+                </div>
+              </li>
+            </ul>
+          </li>
         </ul>
       </div>
     </div>
