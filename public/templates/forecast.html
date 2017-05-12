@@ -4,19 +4,15 @@
   <div class="col-md-6 col-xs-6 additionalInfo text-left">{{ location.localtime | parseDate : "dd MMM yyyy" }} - {{ location.localtime | parseDate : "HH:mm" }}</div>
   <div class="col-md-6 col-xs-6 additionalInfo text-right">{{ current.condition.text}}</div>
 </section>
-<div class="row ">
+<article class="row">
   <div class="col-md-6 col-md-offset-3">
     <div class="text-center">
-      <!--<section class="btn-group btn-group-justified">
-        <a  class="btn btn-default col-md-3" ng-model="content" value="today" ng-checked>Today</a>
-        <a  class="btn btn-default col-md-3" ng-model="content" value="today">48 Hours Forecast</a>
-      </section>-->
       <div class="btn-group btn-group-justified">
         <a href="" class="btn btn-default" target="_self" ng-model="content" ng-click="content = 'today'" visited="visited">Today</a>
-        <a href="" class="btn btn-default" target="_self" ng-model="content" ng-click="content = 'hour'"> 48 Hour</a>
+        <a href="" class="btn btn-default" target="_self" ng-model="content" ng-click="content = 'hour'"> 48 Hours Forecast</a>
       </div>
-
     </div>
+    
     <section ng-show="content == 'today'">
       <div class="col-md-6 col-xs-6 additionalInfo text-left">Feels like</div>
       <div class="col-md-6 col-xs-6 additionalInfo text-right">{{ current.feelslike_c }}</div>
@@ -43,4 +39,4 @@
       </li>
     </ul>
   </div>
-</div>
+</article>

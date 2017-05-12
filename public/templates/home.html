@@ -1,5 +1,16 @@
 <section class="row">
-    <p class="text-info">Enter name of a city and press search:</p>
-    <input class="form-control col-md-6" type="text" name="search" value="">
-    <button type="submit" class="btn btn-default btn-lg">Search</button>
+    <form class="form-horizontal col-md-6 col-md-offset-3" >
+        <div class="form-group" ng-class="{ 'has-error' : formData.$invalid }">
+            <!--<p class="text-default">Enter name of a city and press search:</p>-->
+            <!--<label class="control-label" for="searchBox">Enter name of a city and press search:</label>-->
+            <div class="{{ infoText.className }}" ng-show="infoText.message != ''">{{ infoText.message }}</div>
+            <input 
+                type="text" 
+                class="form-control input-lg" 
+                id="searchBox" 
+                ng-model="formData.cityName"                 
+                required />
+        </div>
+        <a href="#!/forecast" type="submit" class="btn btn-default btn-lg btn-block" ng-class="{ 'disabled' : (formData.cityName == '')}" ng-disabled="formData.$invalid" ng-click="getData()">Search</a>
+    </form>
 </section>
