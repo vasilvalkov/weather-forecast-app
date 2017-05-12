@@ -1,21 +1,29 @@
 'use strict';
 
-// Declare app level module which depends on views, and components
 var weatherApp = angular.module('weatherApp', [
-  // 'ngRoute',
-  // 'weatherApp.view1',
-  // 'weatherApp.view2',
-  // 'weatherApp.version'
-])
-.filter('parseDate', [
-    '$filter', function($filter) {
-        return function(input, format) {
-            return $filter('date')(new Date(input), format);
-        };
-    }
-]);
-// config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
-//   $locationProvider.hashPrefix('!');
+        'ngRoute',
+        // 'weatherApp.version'
+    ])
+    .filter('parseDate', [
+        '$filter',
+        function ($filter) {
+            return function (input, format) {
+                return $filter('date')(new Date(input), format);
+            };
+        }
+    ])
+    .config(['$locationProvider', '$routeProvider', function ($locationProvider, $routeProvider) {
+          $locationProvider.hashPrefix('!');
+        // eagerInstantiationEnabled([enabled]);
 
-//   $routeProvider.otherwise({redirectTo: '/view1'});
-// }]);
+        $routeProvider
+            .when('/home', {
+                templateUrl: 'templates/home.html'
+            })
+            .when('/forecast', {
+                templateUrl: 'templates/forecast.html'
+            })
+            .otherwise({
+                redirectTo: '/home'
+            });
+    }]);
