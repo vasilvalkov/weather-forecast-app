@@ -1,11 +1,11 @@
 'use strict';
 
 weatherApp.controller('WeatherInfoController',
-    function ($scope, forecastData) {
+    function ($scope, $location, forecastData) {
         $scope.formData = {
             cityName: ''
         };
-        
+
         $scope.infoText = {
             className: 'text-default',
             message: 'Enter name of a city and press search:'
@@ -17,6 +17,7 @@ weatherApp.controller('WeatherInfoController',
                         $scope.location = result.data.location;
                         $scope.current = result.data.current;
                         $scope.forecast = result.data.forecast;
+                        $location.url('/forecast');
                     },
                     function (error) {
                         $scope.infoText.className = 'text-warning';
