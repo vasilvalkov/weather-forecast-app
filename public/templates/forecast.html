@@ -8,16 +8,12 @@
   <div class="col-md-6 col-md-offset-3">
     <div class="text-center">
       <!--<section class="btn-group btn-group-justified">
-        <a href="#" class="btn btn-default col-md-3" ng-checked>Today</a>
-        <a href="#" class="btn btn-default col-md-3">48 Hours Forecast</a>
+        <a  class="btn btn-default col-md-3" ng-model="content" value="today" ng-checked>Today</a>
+        <a  class="btn btn-default col-md-3" ng-model="content" value="today">48 Hours Forecast</a>
       </section>-->
-      <div class="btn-group btn-group-justified" data-toggle="buttons">
-        <label class="btn btn-default active">
-          <input type="radio" name="content" ng-model="content" value="today" id="today" checked />Today
-        </label>
-        <label class="btn btn-default">
-          <input type="radio" name="content" ng-model="content" value="hour" id="hour" />48 Hours Forecast
-        </label>
+      <div class="btn-group btn-group-justified">
+        <a href="" class="btn btn-default" target="_self" ng-model="content" ng-click="content = 'today'" visited="visited">Today</a>
+        <a href="" class="btn btn-default" target="_self" ng-model="content" ng-click="content = 'hour'"> 48 Hour</a>
       </div>
 
     </div>

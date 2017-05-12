@@ -12,4 +12,6 @@ weatherApp.controller('WeatherInfoController',
                 // TODO: notify user no data for the entered city, town or village
             });
 
+            $scope.content = 'today';
+
     });
