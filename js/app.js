@@ -1,8 +1,7 @@
 'use strict';
 
 var weatherApp = angular.module('weatherApp', [
-        'ngRoute',
-        // 'weatherApp.version'
+        'ngRoute'
     ])
     .filter('parseDate', [
         '$filter',

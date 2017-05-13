@@ -1,36 +1,35 @@
-<!--<a href="/" class="btn btn-default" id="homeBtn">Home</a>-->
+<a href="/" class="btn btn-default" id="homeBtn">Home</a>
 
-<section>
-  <!--<div class="row">-->
-  <div class="container">
-    <div class="row">
-      <div class="col-xs-6 mainInfo pull-left">{{ location.name }}</div>
-      <div class="col mainInfo pull-right" id="temperature">
-        <img src="{{ current.condition.icon }}" />
-        <span> {{ current.temp_c }}&deg;</span>
-      </div>
-    </div>
-    <!--</div>-->
-    <!--<div class="clearfix visible-sm"></div>-->
-    <div class="row">
-      <div class="col additionalInfo pull-left" id="localTime">{{ location.localtime | parseDate : "dd MMM yyyy" }} - {{ location.localtime | parseDate : "HH:mm" }}</div>
-      <div class="col additionalInfo pull-right" id="condition">{{ current.condition.text}}</div>
+<header class="container" id="largeHeader" >
+  <div class="row">
+    <div class="col-xs-6 mainInfo pull-left">{{ location.name }}</div>
+    <div class="col mainInfo pull-right" id="temperature">
+      <img src="{{ current.condition.icon }}" />
+      <span> {{ current.temp_c }}&deg;</span>
     </div>
   </div>
-</section>
+  <div class="row">
+    <div class="col additionalInfo pull-left" id="localTime">{{ location.localtime | parseDate : "dd MMM yyyy" }} - {{ location.localtime | parseDate : "HH:mm" }}</div>
+    <div class="col additionalInfo pull-right" id="condition">{{ current.condition.text}}</div>
+  </div>
+</header>
+
+<!--<header class="container hidden-md hidden-lg hidden-xl" id="smallHeader" ng-show="content == 'hour'">
+  <div class="row">
+    <h1>Forecast</h1>
+  </div>
+  <div class="row">
+    <div class="col-xs-8 mainInfo pull-left">{{ location.name }}</div>
+    <div class="col additionalInfo pull-right" id="temperature">Next 48 hours</div>
+  </div>
+</header>-->
+
 <article class="row">
   <div class="col-md-6 col-md-offset-3">
-    <!--<div class="text-center">
-      <div class="btn-group btn-group-justified">
-        <a href="" class="btn btn-default" target="_self" ng-model="content" ng-click="content = 'today'" visited="visited">Today</a>
-        <a href="" class="btn btn-default" target="_self" ng-model="content" ng-click="content = 'hour'"> 48 Hours Forecast</a>
-      </div>
-    </div>-->
-
-    <ul class="nav nav-pills ">
-      <li class="col-xs-6 text-center active"><a href="" data-toggle="tab" aria-expanded="true" ng-model="content" ng-click="content = 'today'">Today</a></li>
-      <li class="col-xs-6 text-center"><a href="" data-toggle="tab" aria-expanded="false" ng-model="content" ng-click="content = 'hour'">48 Hours Forecast</a></li>
-    </ul>
+    <div class="text-center btn-group-justified hidden-sm hidden-xs">
+      <a href="" id="todya" class="btn btn-default" target="_self" ng-model="content" ng-click="content = 'today'">Today</a>
+      <a href="" id="hourly" class="btn btn-default" target="_self" ng-model="content" ng-click="content = 'hour'">48 Hours Forecast</a>
+    </div>
 
     <table class="table" ng-show="content == 'today'">
       <tr class="row">
@@ -67,5 +66,10 @@
         </ul>
       </li>
     </ul>
+
+    <div class="text-center btn-group-justified hidden-md hidden-lg hidden-xl">
+      <a href="" id="hourlySmallScreen" class="btn btn-default" target="_self" ng-model="content" ng-hide="content == 'hour'"
+        ng-click="content = 'hour'">48 Hours Forecast</a>
+    </div>
   </div>
 </article>

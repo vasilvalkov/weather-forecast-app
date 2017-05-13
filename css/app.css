@@ -25,6 +25,12 @@ body {
 #view {
     margin: 5% 0;
 }
+
+header {
+    margin-bottom: 40px;
+}
+
+
 /* Typography
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 
@@ -41,35 +47,17 @@ h2 {
     font-size: 2.6rem;
 }
 
-@media (max-width: 766px) {
-    .mainInfo {
-        font-size: 2.8rem;
-    }
-    .additionalInfo {
-        font-size: 1.6rem;
-    }
-    #temperature {
-        margin-bottom: -15px;
-    }
-    #localTime {
-        width: 100%;
-    }
-    #condition {
-        float: left !important;
-    }
-}
-
 .logo {
     margin-top: 40px;
     width: 20%;
     height: auto;
-    /*overflow: hidden;*/
 }
 
 .icon {
     width: 20%;
     margin: 0 0;
 }
+
 
 /* Lists
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
@@ -103,8 +91,8 @@ li.borderBottom {
 
 #homeBtn {
     position: absolute;
-    top: 80px;
-    left: 230px;
+    top: 0;
+    left: 10%;
 }
 
 #searchBtn {
@@ -113,7 +101,7 @@ li.borderBottom {
 }
 
 .form-group {
-    margin: 10% auto !important;
+    margin: 5% auto !important;
     float: none;
 }
 
@@ -121,4 +109,30 @@ li.borderBottom {
     display: block;
     text-align: left;
     font-size: 1.5rem;
+}
+
+
+/* Queries
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+@media all and (max-width: 766px) {
+    .mainInfo {
+        font-size: 2.8rem;
+    }
+    .additionalInfo {
+        font-size: 1.6rem;
+    }
+    #temperature {
+        margin-bottom: -15px;
+    }
+    #localTime {
+        width: 100%;
+    }
+    #condition {
+        float: left !important;
+    }
+    #hourlySmallScreen {
+        display: inline-block !important;
+        width: 60%;
+    }
 }
