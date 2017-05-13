@@ -20,7 +20,7 @@ weatherApp.controller('WeatherInfoController',
                         $location.url('/forecast');
                     },
                     function (error) {
-                        $scope.infoText.className = 'text-warning';
+                        $scope.infoText.className = 'text-danger';
                         $scope.infoText.message = error.data.error.message;
                     })
                 .catch(function (ex) {

@@ -13,8 +13,9 @@ var weatherApp = angular.module('weatherApp', [
         }
     ])
     .config(['$locationProvider', '$routeProvider', function ($locationProvider, $routeProvider) {
-        $locationProvider.html5Mode(true);
-
+        // $locationProvider.html5Mode(true);
+        $locationProvider.hashPrefix('!');
+        
         $routeProvider
             .when('/home', {
                 templateUrl: 'templates/home.html'

@@ -1,0 +1,59 @@
+<!--<a href="/" class="btn btn-default" id="homeBtn">Home</a>-->
+
+<section>
+  <div class="row align-items-center">
+    <div class="col-xs-6 col-xs-auto mainInfo text-left">{{ location.name }}</div>
+    <div class="col-xs-6 col-xs-auto mainInfo text-right"><img src="{{ current.condition.icon }}" /> {{ current.temp_c }}&deg;</div>
+    <!--</div>
+  <div class="row">-->
+    <div class="col-xs-6 additionalInfo text-left">{{ location.localtime | parseDate : "dd MMM yyyy" }} - {{ location.localtime | parseDate : "HH:mm" }}</div>
+    <div class="col-xs-6 additionalInfo text-right">{{ current.condition.text}}</div>
+  </div>
+</section>
+<article class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <!--<div class="text-center">
+      <div class="btn-group btn-group-justified">
+        <a href="" class="btn btn-default" target="_self" ng-model="content" ng-click="content = 'today'" visited="visited">Today</a>
+        <a href="" class="btn btn-default" target="_self" ng-model="content" ng-click="content = 'hour'"> 48 Hours Forecast</a>
+      </div>
+    </div>-->
+
+    <ul class="nav nav-pills ">
+      <li class="col-xs-6 text-center active"><a href="" data-toggle="tab" aria-expanded="true" ng-model="content" ng-click="content = 'today'">Today</a></li>
+      <li class="col-xs-6 text-center"><a href="" data-toggle="tab" aria-expanded="false" ng-model="content" ng-click="content = 'hour'">48 Hours Forecast</a></li>
+    </ul>
+
+    <section ng-show="content == 'today'">
+      <div class="row">
+        <div class="col-xs-6 additionalInfo ">Feels like</div>
+        <div class="col-xs-6 additionalInfo text-right">{{ current.feelslike_c }}</div>
+      </div>
+      <div class="row">
+        <div class="col-xs-6 additionalInfo">Wind</div>
+        <div class="col-xs-6 additionalInfo text-right">{{ current.wind_kph }} km/h</div>
+      </div>
+      <div class="row">
+        <div class="col-xs-6 additionalInfo">Humidity</div>
+        <div class="col-xs-6 additionalInfo text-right">{{ current.humidity }} %</div>
+      </div>
+    </section>
+
+    <ul ng-show="content == 'hour'">
+      <li ng-repeat="day in forecast.forecastday">
+        <ul class="">
+          <li class="borderBottom d-flex w-100 justify-content-between" ng-repeat="hour in day.hour">
+            <div class="row">
+              <div class="col-xs-6 additionalInfo text-left">{{ hour.time | parseDate : 'HH:mm' }}</div>
+              <div class="col-xs-6 additionalInfo text-right"><img class="ing-responsive smaller" src="{{ hour.condition.icon }}" /> {{ hour.temp_c }}&deg;</div>
+            </div>
+            <div class="row">
+              <div class="col-xs-6 text-left">{{ hour.time | parseDate : "dd MMM yyyy" }}</div>
+              <div class="col-xs-6 text-right">{{ hour.condition.text}}</div>
+            </div>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</article>
