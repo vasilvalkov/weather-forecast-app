@@ -22,7 +22,9 @@ body {
     max-width: 1160px;
 }
 
-
+#view {
+    margin: 5% 0;
+}
 /* Typography
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 
@@ -32,6 +34,7 @@ h2 {
 
 .mainInfo {
     font-size: 4.8rem;
+    padding-left: 0;
 }
 
 .additionalInfo {
@@ -45,18 +48,28 @@ h2 {
     .additionalInfo {
         font-size: 1.6rem;
     }
+    #temperature {
+        margin-bottom: -15px;
+    }
+    #localTime {
+        width: 100%;
+    }
+    #condition {
+        float: left !important;
+    }
 }
 
-.smaller {
+.logo {
+    margin-top: 40px;
     width: 20%;
     height: auto;
-    overflow: hidden;
+    /*overflow: hidden;*/
 }
 
-.top-breathe {
-    margin-top: 15px;
+.icon {
+    width: 20%;
+    margin: 0 0;
 }
-
 
 /* Lists
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
