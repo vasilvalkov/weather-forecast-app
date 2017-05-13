@@ -1,12 +1,15 @@
-<section class="row">
+<section class="">
     <form class="form-horizontal">
-        <div class="form-group row align-items-center justify-content-start" ng-class="{ 'has-error' : formData.$invalid }">
+        <div class="row text-center" ng-class="{ 'has-error' : formData.$invalid }">
             <!--<p class="text-default">Enter name of a city and press search:</p>-->
             <!--<label class="control-label" for="searchBox">Enter name of a city and press search:</label>-->
-            <div class="col-md-4 col-auto {{ infoText.className }}" ng-show="infoText.message != ''">{{ infoText.message }}</div>
-            <input type="search" class="form-control input-lg col-md-4" id="searchBox" ng-model="formData.cityName" required />
+            <div class="form-group col-md-6 col-xs-10">
+                <label for="searchBox" class="control-label {{ infoText.className }}" ng-show="infoText.message != ''">{{ infoText.message }}</label>
+                <input type="search" class="form-control input-lg" id="searchBox" ng-model="formData.cityName" required />
+                <a href class="btn btn-primary btn-lg" id="searchBtn" ng-class="{ 'disabled' : (formData.cityName == '')}" ng-disabled="formData.$invalid"
+                    ng-click="getData()">Search</a>
+            </div>
         </div>
-        <a href class="btn btn-primary btn-lg btn-block col-md-4 col-auto" ng-class="{ 'disabled' : (formData.cityName == '')}" ng-disabled="formData.$invalid"
-            ng-click="getData()">Search</a>
+
     </form>
 </section>

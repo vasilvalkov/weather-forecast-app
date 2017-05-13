@@ -50,6 +50,11 @@ h2 {
 .smaller {
     width: 20%;
     height: auto;
+    overflow: hidden;
+}
+
+.top-breathe {
+    margin-top: 15px;
 }
 
 
@@ -87,4 +92,20 @@ li.borderBottom {
     position: absolute;
     top: 80px;
     left: 230px;
+}
+
+#searchBtn {
+    margin: 20% 0;
+    padding: 5% 10%;
+}
+
+.form-group {
+    margin: 10% auto !important;
+    float: none;
+}
+
+.form-horizontal .control-label {
+    display: block;
+    text-align: left;
+    font-size: 1.5rem;
 }
